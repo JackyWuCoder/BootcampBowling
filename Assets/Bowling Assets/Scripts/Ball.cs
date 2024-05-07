@@ -19,6 +19,10 @@ public class Ball : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         // Check for collision with an object
-        Debug.Log("Ball has collided with " + collision.gameObject.name);
+        // Debug.Log("Ball has collided with " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag("Pin"))
+        {
+            Debug.Log("The object we collided with is " + collision.gameObject.name);
+        }
     }
 }

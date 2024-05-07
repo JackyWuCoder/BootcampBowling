@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pin
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d79ff3aa652321b4d8376b150dfb5aca, type: 3}
+      propertyPath: m_TagString
+      value: Pin
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d79ff3aa652321b4d8376b150dfb5aca, type: 3}
       propertyPath: m_RootOrder
       value: 0
