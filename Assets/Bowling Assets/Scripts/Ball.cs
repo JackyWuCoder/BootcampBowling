@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    GameManager gameManager;
+    private GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,5 +25,14 @@ public class Ball : MonoBehaviour
         {
             Debug.Log("The object we collided with is " + collision.gameObject.name);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pit"))
+        {
+            gameManager.SetNextThrow();
+        }
+        // Destroy Ball GameObject
     }
 }

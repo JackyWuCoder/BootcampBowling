@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         StartThrow();
     }
 
-    private void StartThrow()
+    public void StartThrow()
     {
         throwingArrowAnim.SetBool("Aiming", true);
         wasBallThrown = false;
