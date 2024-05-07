@@ -34,5 +34,6 @@ public class Ball : MonoBehaviour
             gameManager.SetNextThrow();
         }
         // Destroy Ball GameObject
+        Destroy(gameObject);
     }
 }
