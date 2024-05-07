@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isSprintSpeedActive = false;
         }
-        if (isSprintSpeedActive = true)
+        if (isSprintSpeedActive == true)
         {
             speed = sprintSpeed;
         }
