@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForSprint()
     {
-        if (Input.GetKey(KeyCode.LeftShift)
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             isSprintSpeedActive = true;
         }
