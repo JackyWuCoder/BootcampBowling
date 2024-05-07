@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 296536347}
   - component: {fileID: 296536346}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -521,7 +521,7 @@ Transform:
   m_GameObject: {fileID: 380481825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -4.5}
+  m_LocalPosition: {x: 0, y: 0.1, z: -4.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2918,6 +2918,6 @@ SceneRoots:
   - {fileID: 701267592}
   - {fileID: 1014821328}
   - {fileID: 1970285395}
+  - {fileID: 380481826}
   - {fileID: 296536349}
   - {fileID: 1056048772}
-  - {fileID: 380481826}
