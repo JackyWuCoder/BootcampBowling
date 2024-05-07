@@ -7,7 +7,7 @@ public class HelloWorld : MonoBehaviour
     public int numberVariable; // Variable declaration
     public bool isDoingSomething = false; // Variable initialization
     public float speed = 10.0f;
-    public string name = "0t";
+    public string stringName = "0t";
 
     public Transform cubeTransform;
     public Vector3 position;

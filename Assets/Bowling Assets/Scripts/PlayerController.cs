@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float arrowMinPosition = -0.25f;
     public float arrowMaxPosition = 0.25f;
     public Transform throwingArrow;
-    public Transform ball;
+    public Transform ballSpawnPoint;
     public float throwForce = 5.0f;
     public Animator throwingArrowAnim;
     public Rigidbody[] balls;
@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        ballOffset = ball.position - throwingArrow.position;
+        ballOffset = ballSpawnPoint.position - throwingArrow.position;
         StartThrow();
     }
 
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
 
         // Spawn a new ball when StartThrow() is called.
         int randomNumber = GetRandomNumber(0, balls.Length);
-        selectedBall = Instantiate(balls[randomNumber]);
+        selectedBall = Instantiate(balls[randomNumber], ballSpawnPoint.position, Quaternion.identity);
     }
 
     private int GetRandomNumber(int min, int max)
@@ -68,7 +68,7 @@ public class PlayerController : MonoBehaviour
                     throwingArrow.position.z
                 );
             // Set ball position based on throwing direction position
-            ball.position = throwingArrow.position + ballOffset;
+            selectedBall.position = throwingArrow.position + ballOffset;
         }
     }
 
@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             wasBallThrown = true;
-            ball.GetComponent<Rigidbody>().AddForce(throwingArrow.forward * throwForce, ForceMode.Impulse);
+            selectedBall.AddForce(throwingArrow.forward * throwForce, ForceMode.Impulse);
             throwingArrowAnim.SetBool("Aiming", false);
         }
     }
