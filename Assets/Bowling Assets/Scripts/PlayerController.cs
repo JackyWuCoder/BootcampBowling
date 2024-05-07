@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public Transform throwingArrow;
     public Transform ball;
     public float throwForce = 5.0f;
+    public Animator throwingArrowAnim;
+
     private float horizontalInput;
     private Vector3 ballOffset;
     private bool wasBallThrown;
@@ -18,6 +20,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ballOffset = ball.position - throwingArrow.position;
+        StartThrow();
+    }
+
+    private void StartThrow()
+    {
+        throwingArrowAnim.SetBool("Aiming", true);
+        wasBallThrown = false;
     }
 
     // Update is called once per frame
@@ -58,6 +67,7 @@ public class PlayerController : MonoBehaviour
         {
             wasBallThrown = true;
             ball.GetComponent<Rigidbody>().AddForce(throwingArrow.forward * throwForce, ForceMode.Impulse);
+            throwingArrowAnim.SetBool("Aiming", false);
         }
     }
 }
