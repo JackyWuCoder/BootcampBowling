@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,10 +12,12 @@ public class PlayerController : MonoBehaviour
     public Transform ball;
     public float throwForce = 5.0f;
     public Animator throwingArrowAnim;
+    public Rigidbody[] balls;
 
     private float horizontalInput;
     private Vector3 ballOffset;
     private bool wasBallThrown;
+    private Rigidbody selectedBall;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +30,15 @@ public class PlayerController : MonoBehaviour
     {
         throwingArrowAnim.SetBool("Aiming", true);
         wasBallThrown = false;
+
+        // Spawn a new ball when StartThrow() is called.
+        int randomNumber = GetRandomNumber(0, balls.Length);
+        selectedBall = Instantiate(balls[randomNumber]);
+    }
+
+    private int GetRandomNumber(int min, int max)
+    {
+        return Random.Range(min, max);
     }
 
     // Update is called once per frame
