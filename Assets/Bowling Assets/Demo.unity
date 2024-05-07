@@ -1078,7 +1078,7 @@ MonoBehaviour:
   isDoingSomething: 0
   speed: 10
   name: 0t
-  cubeTransform: {fileID: 0}
+  cubeTransform: {fileID: 296536349}
   position: {x: 0, y: 0, z: 0}
 --- !u!4 &786589638
 Transform:
@@ -2910,6 +2910,11 @@ PrefabInstance:
     - target: {fileID: 4271740314904405151, guid: fb7866d5388a3914fabc4f9ad9ec2852,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8695205922397547536, guid: fb7866d5388a3914fabc4f9ad9ec2852,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
