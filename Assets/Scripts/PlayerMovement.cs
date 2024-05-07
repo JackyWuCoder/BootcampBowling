@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float sprintSpeed = 50.0f;
+    public bool isSprintSpeedActive = false;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,26 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             transform.Translate(transform.right * speed * Time.deltaTime);
+        }
+    }
+
+    private void CheckForSprint()
+    {
+        if (Input.GetKey(KeyCode.LeftShift)
+        {
+            isSprintSpeedActive = true;
+        }
+        else
+        {
+            isSprintSpeedActive = false;
+        }
+        if (isSprintSpeedActive = true)
+        {
+            speed = sprintSpeed;
+        }
+        else 
+        {
+            speed = 10.0f;
         }
     }
 }
