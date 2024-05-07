@@ -9,8 +9,10 @@ public class PlayerController : MonoBehaviour
     public float arrowMaxPosition = 0.25f;
     public Transform throwingArrow;
     public Transform ball;
+    public float throwForce = 5.0f;
     private float horizontalInput;
     private Vector3 ballOffset;
+    private bool wasBallThrown;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +23,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MoveArrowWithoutConstraints();
         MoveArrowWithConstraints();
+        TryThrowBall();
     }
 
     private void MoveArrowWithoutConstraints()
@@ -34,14 +36,28 @@ public class PlayerController : MonoBehaviour
 
     private void MoveArrowWithConstraints()
     {
-        // Moving with constraints
-        float movePosition = Input.GetAxis("Horizontal") * playerMovementSpeed * Time.deltaTime;
-        throwingArrow.position = new Vector3(
-            Mathf.Clamp(throwingArrow.transform.position.x + movePosition, arrowMinPosition, arrowMaxPosition),
-                throwingArrow.position.y,
-                throwingArrow.position.z
-            );
-        // Set ball position based on throwing direction position
-        ball.position = throwingArrow.position + ballOffset;
+        // Check if ball has not yet been thrown
+        if (!wasBallThrown) //wasBallThrown == false
+        {
+            // Moving with constraints
+            float movePosition = Input.GetAxis("Horizontal") * playerMovementSpeed * Time.deltaTime;
+            throwingArrow.position = new Vector3(
+                Mathf.Clamp(throwingArrow.transform.position.x + movePosition, arrowMinPosition, arrowMaxPosition),
+                    throwingArrow.position.y,
+                    throwingArrow.position.z
+                );
+            // Set ball position based on throwing direction position
+            ball.position = throwingArrow.position + ballOffset;
+        }
+    }
+
+    private void TryThrowBall()
+    {
+        // Throw the ball
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            wasBallThrown = true;
+            ball.GetComponent<Rigidbody>().AddForce(throwingArrow.forward * throwForce, ForceMode.Impulse);
+        }
     }
 }
