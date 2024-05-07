@@ -25,6 +25,9 @@ public class HelloWorld : MonoBehaviour
     void Update()
     {
         Debug.Log("The number variable is: " + numberVariable);
-        cubeTransform.Translate(Vector3.forward);
+        if (5 > 3 || isDoingSomething == true)
+        {
+            cubeTransform.Rotate(Vector3.up * Time.deltaTime * speed);
+        }
     }
 }
