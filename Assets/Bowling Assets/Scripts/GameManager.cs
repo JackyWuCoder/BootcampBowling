@@ -19,7 +19,8 @@ public class GameManager : MonoBehaviour
     }
 
     public void SetNextThrow()
-    { 
+    {
         // Get the ball to the start position for throwing
+        playerController.StartThrow();
     }
 }
