@@ -98,5 +98,14 @@ public class ScoreManager : MonoBehaviour
             // TODO:  GameManager to Reset All Pins
             return;
         }
+        // Ball 3 Only Frame 10
+        if (currentThrow == 3 && currentFrame == 10)
+        {
+            frames[currentFrame - 1] += score;
+            // End of all throws
+            currentThrow = 0;
+            currentFrame = 0;
+            return;
+        }
     }
 }
