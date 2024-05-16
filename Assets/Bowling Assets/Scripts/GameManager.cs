@@ -15,12 +15,6 @@ public class GameManager : MonoBehaviour
         StartGame();
     }
 
-    public void StartGame()
-    {
-        isGamePlaying = true;
-        SetNextThrow();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +24,12 @@ public class GameManager : MonoBehaviour
             StartGame();
         }
         */
+    }
+
+    public void StartGame()
+    {
+        isGamePlaying = true;
+        SetNextThrow();
     }
 
     public void SetNextThrow()
@@ -50,5 +50,13 @@ public class GameManager : MonoBehaviour
             }
         }
         Debug.Log("Total Fallen Pins " + count);
+    }
+
+    public void ResetAllPins()
+    {
+        foreach (Pin pin in pins)
+        {
+            pin.ResetPin();
+        }
     }
 }

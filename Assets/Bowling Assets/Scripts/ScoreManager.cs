@@ -49,7 +49,8 @@ public class ScoreManager : MonoBehaviour
                     isStrike = true;
                     currentFrame++; // Move to next frame since full marks obtained
                 }
-                //TODO: GameManager to Reset Pins
+                // Reset All Pins via GameManager
+                gameManager.ResetAllPins();
             }
             else
             {
@@ -95,7 +96,8 @@ public class ScoreManager : MonoBehaviour
                     currentThrow = 1;
                 }
             }
-            // TODO:  GameManager to Reset All Pins
+            // Reset All Pins via GameManager
+            gameManager.ResetAllPins();
             return;
         }
         // Ball 3 Only Frame 10
