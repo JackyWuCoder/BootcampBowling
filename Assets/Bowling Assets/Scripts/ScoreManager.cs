@@ -57,5 +57,17 @@ public class ScoreManager : MonoBehaviour
             }
             return;
         }
+        if (currentThrow == 2)
+        {
+            frames[currentFrame] += score;
+
+            // Parallel process to check strike
+            if (isStrike)
+            {
+                frames[currentFrame - 2] += frames[currentFrame - 1];
+                isStrike = false;
+            }
+            //---------------------------------------------------------
+        }
     }
 }
