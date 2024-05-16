@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         ballOffset = ballSpawnPoint.position - throwingArrow.position;
-        StartThrow();
+        // StartThrow();
     }
 
     public void StartThrow()

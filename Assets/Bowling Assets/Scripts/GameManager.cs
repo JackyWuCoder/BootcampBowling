@@ -8,16 +8,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private Pin[] pins;
 
+    private bool isGamePlaying = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        isGamePlaying = true;
+        SetNextThrow();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        /*
+        if (isGamePlaying == false && Input.GetKeyUp(KeyCode.X))
+        {
+            StartGame();
+        }
+        */
     }
 
     public void SetNextThrow()
