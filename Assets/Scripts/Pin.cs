@@ -6,6 +6,8 @@ public class Pin : MonoBehaviour
 {
     public bool isFallen;
 
+    public float pinFallAccuracy = 5.0f;
+
     private Vector3 startPosition;
     private Quaternion startRotation;
 
@@ -24,6 +26,13 @@ public class Pin : MonoBehaviour
     void Update()
     {
         // Check if pin has fallen
-        Debug.Log("The Angle btw start rotation and current rotation is " + Quaternion.Angle(startRotation,transform.localRotation));
+        isFallen = Quaternion.Angle(startRotation, transform.localRotation) > pinFallAccuracy;
+    }
+
+    public void ResetPin()
+    {
+        pinRb.velocity = Vector3.zero;
+        transform.position = startPosition;
+        transform.rotation = startRotation;
     }
 }
