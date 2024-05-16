@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ResetScore();
     }
 
     // Update is called once per frame
@@ -107,5 +107,23 @@ public class ScoreManager : MonoBehaviour
             currentFrame = 0;
             return;
         }
+    }
+
+    public int CalculateTotalScore()
+    {
+        totalScore = 0;
+        foreach (var frame in frames)
+        {
+            totalScore += frame;
+        }
+        return totalScore;
+    }
+
+    private void ResetScore()
+    {
+        totalScore = 0;
+        currentFrame = 1;
+        currentThrow = 1;
+        frames = new int[10];
     }
 }
