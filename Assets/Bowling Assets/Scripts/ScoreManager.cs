@@ -37,6 +37,25 @@ public class ScoreManager : MonoBehaviour
                 frames[currentFrame - 2] += score;
                 isSpare = false;
             }
+            //----------------------------------------------
+            if (score == 10)
+            {
+                if (currentFrame == 10)
+                {
+                    currentThrow++; // Wait for Ball 2
+                }
+                else
+                {
+                    isStrike = true;
+                    currentFrame++; // Move to next frame since full marks obtained
+                }
+                //TODO: GameManager to Reset Pins
+            }
+            else
+            {
+                currentThrow++; // WAit for Ball 2
+            }
+            return;
         }
     }
 }
