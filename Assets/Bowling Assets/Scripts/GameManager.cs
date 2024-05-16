@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private ScoreManager scoreManager;
     [SerializeField] private Pin[] pins;
 
     private bool isGamePlaying = false;
@@ -29,17 +30,34 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         isGamePlaying = true;
-        SetNextThrow();
+
+        // Get first throw
+        playerController.StartThrow();
     }
 
     public void SetNextThrow()
     {
-        CalculateFallenPins();
-        // Get the ball to the start position for throwing
-        playerController.StartThrow();
+        Invoke(nameof(NextThrow), 3.0f);
     }
 
-    public void CalculateFallenPins()
+    private void NextThrow()
+    {
+        if (scoreManager.currentFrame == 0)
+        {
+            Debug.Log($"Game over {scoreManager.CalculateTotalScore()}");
+        }
+        else
+        {
+            Debug.Log($"Frame: {scoreManager.currentFrame}, Throw: {scoreManager.currentThrow}");
+            scoreManager.SetFrameScore(CalculateFallenPins());
+            Debug.Log($"Current Score: {scoreManager.CalculateTotalScore()}");
+
+            // Get the ball to the start position for throwing
+            playerController.StartThrow();
+        }
+    }
+
+    public int CalculateFallenPins()
     {
         int count = 0;
         foreach (Pin pin in pins)
@@ -47,9 +65,11 @@ public class GameManager : MonoBehaviour
             if (pin.isFallen)
             {
                 count++;
+                pin.gameObject.SetActive(false);
             }
         }
         Debug.Log("Total Fallen Pins " + count);
+        return count;
     }
 
     public void ResetAllPins()
