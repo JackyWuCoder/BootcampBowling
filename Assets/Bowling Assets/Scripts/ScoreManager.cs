@@ -68,6 +68,35 @@ public class ScoreManager : MonoBehaviour
                 isStrike = false;
             }
             //---------------------------------------------------------
+            if (frames[currentFrame - 1] == 10) // Is total frame score 10?
+            {
+                if (currentFrame == 10)
+                {
+                    currentThrow++; // Wait for Ball 3
+                }
+                else
+                {
+                    isSpare = true;
+                    currentFrame++;
+                    currentThrow = 1;
+                }
+            }
+            else
+            {
+                if (currentFrame == 10)
+                {
+                    // End of all throws
+                    currentThrow = 0;
+                    currentFrame = 0;
+                }
+                else
+                {
+                    currentFrame++;
+                    currentThrow = 1;
+                }
+            }
+            // TODO:  GameManager to Reset All Pins
+            return;
         }
     }
 }
