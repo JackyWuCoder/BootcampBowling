@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Profiling;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -23,4 +24,16 @@ public class UIManager : MonoBehaviour
     {
         
     }
+
+    public void ResetFrameUI()
+    {
+        frames = new FrameUI[frameHolder.childCount];
+        for (int i = 0; i < frameHolder.childCount; i++)
+        {
+            frames[i] = frameHolder.GetChild(i).GetComponent<FrameUI>();
+            frames[i].SetFrame(i + 1);
+        }
+    }
+
+
 }
